@@ -42,9 +42,35 @@ app.get('/film', (req, res) => {
       connection.end()
   })
   
+  app.post('/egySzavazatDb', (req, res) => {
+    kapcsolat()
+    connection.query('select count(*) as db from szavazat where szavazat_film=?',[req.body.bevitel1], (err, rows, fields) => {
+        if (err) {
+            console.log(err)
+            res.status(500).send("Hiba")
+        }
+        else{
+            console.log(rows)
+            res.status(200).send(rows)
+        }
+      })
+      connection.end()
+  })
 
-
-
+  app.post('/felvitelSzavazat', (req, res) => {
+    kapcsolat()
+    connection.query('insert into szavazat values (null,?)',[req.body.bevitel1], (err, rows, fields) => {
+        if (err) {
+            console.log(err)
+            res.status(500).send("Hiba")
+        }
+        else{
+            console.log(rows)
+            res.status(200).send(rows)
+        }
+      })
+      connection.end()
+  })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
