@@ -47,7 +47,7 @@ function SajatStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="SajatMenu" component={SajatMenu} options={{ title: 'Saját' }} />
-      <Stack.Screen name="SajatMenu2" component={SajatMenu2} options={{ title: 'Saját' }} />
+      <Stack.Screen name="SajatMenu2" component={SajatMenu2} options={{ title: 'Saját 2' }} />
        
     </Stack.Navigator>
   );

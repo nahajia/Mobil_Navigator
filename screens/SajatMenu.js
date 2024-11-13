@@ -7,7 +7,7 @@ export default function SajatMenu({navigation}) {
   const [adatok,setAdatok]=useState([])
 
   const letoltes=async ()=>{
-      const x=await fetch("http://10.0.0.134:3000/film")
+      const x=await fetch("http://192.168.0.107:3000/film")
       const y=await x.json()
       setAdatok(y)
       alert(JSON.stringify(y))
@@ -17,9 +17,9 @@ export default function SajatMenu({navigation}) {
       letoltes()
   },[])
 
-  const reszletekFv=(id)=>{
+  const reszletekFv=(id,cim)=>{
     //alert(id)
-    navigation.navigate("SajatMenu2",{id:id})
+    navigation.navigate("SajatMenu2",{id:id,cim:cim})
   }
 
   return (
@@ -33,7 +33,7 @@ export default function SajatMenu({navigation}) {
     
                 <TouchableOpacity 
                     style={{backgroundColor:"#0000ff"}} 
-                    onPress={()=>reszletekFv(item.film_id)}>
+                    onPress={()=>reszletekFv(item.film_id,item.film_cim)}>
                   <Text style={{color:"white"}}>Részletek</Text>
                 </TouchableOpacity>
             
